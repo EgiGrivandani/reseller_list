@@ -121,6 +121,13 @@ $assets = base_url('assets/home/');
     </section>
     <section class="list-seller" id="sellerContent" style="display: none">
         <div class="container">
+			<div class="text-center mb-3 ">
+				<p class="badge fs-4"
+				   style="background-color: #e7eef7; color: #182639; text-transform: uppercase;  box-shadow: 0 2px 4px 0 rgba(52, 103, 156, 0.15);">
+					The seller list below provides
+					payment via
+					local bank transfer</p>
+			</div>
             <div class="header-list">
                 <div class="row  d-flex justify-content-center align-items-center">
                     <div class="col-md-8">
