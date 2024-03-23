@@ -104,7 +104,7 @@ $assets = base_url('assets/home/');
             </div>
         </div>
     </section>
-    <section class="list-seller">
+    <section class="list-seller" id="sellerContent" style="display: none">
         <div class="container">
             <div class="header-list">
                 <div class="row  d-flex justify-content-center align-items-center">
@@ -170,7 +170,7 @@ $assets = base_url('assets/home/');
         <section class="footer">
             <div class="container">
                 <p class="content"> Copyright &copy; 2024
-                    PT. Borneo World Wide.
+                    PT. Borneo World Wide.s
                     All rights reserved.</p>
         </section>
     </footer>
@@ -279,9 +279,14 @@ $assets = base_url('assets/home/');
             type: 'post',
             dataType: 'json',
             success: function(response) {
-                $('#countrySUB').html(response.country)
 
-                metaResponse(response)
+				if(response.found){
+					$('#sellerContent').css('display', 'block');
+					$('#countrySUB').html(response.country)
+
+					metaResponse(response)
+				}
+
             }
         });
     }

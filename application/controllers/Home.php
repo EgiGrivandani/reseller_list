@@ -28,7 +28,7 @@ class Home extends CI_Controller
 	}
 
 	private function _countryCode(){
-		$CN = 'WW';
+		$CN = '';
 		if(isset($_SERVER["HTTP_CF_IPCOUNTRY"])){
 			$CN = $_SERVER["HTTP_CF_IPCOUNTRY"];
 		}else{
@@ -41,19 +41,11 @@ class Home extends CI_Controller
 
 		$check = $this->M_home->CountryByName_get($CN);
 
-		$NC = 'WorldWide';
-		$CI = 999;
+		$NC = '';
+		$CI = 0;
 		if($check){
-            $CI3 = $check->id;
-
-            $ResellerById = $this->M_home->resellerById_list($CI3);
-            if($ResellerById){
-                $countryName = $ResellerById->country;
-                if($countryName !== 999){
-                    $NC = $check->name;
-                    $CI = $countryName;
-                }
-            }
+			$CI = $check->id;
+			$NC = $check->name;
 		}
         $validate = $this->M_home->reseller_list($CI);
 		return [$NC, $validate];
@@ -66,13 +58,17 @@ class Home extends CI_Controller
 		}
 
 		$data = $this->_countryCode();
+		$found = false;
 		$NC   = $data[0];
 		$arr  = $data[1];
-
+		if(!empty($arr)){
+			$found = true;
+		}
 
 		echo json_encode([
 			'country' => $NC,
-			'list'	  => $arr
+			'list'	  => $arr,
+			'found'	  => $found
 		]);
 	}
 

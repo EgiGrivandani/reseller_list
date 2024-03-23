@@ -27,10 +27,10 @@ class M_home extends CI_Model
 			$this->db->where('country', $CI);
 
 			$query = $this->db->get();
-			if ($query->num_rows() == 0) {
-				$this->db->where('country', 999);
-				$query = $this->db->get('reseller');
-			}
+//			if ($query->num_rows() == 0) {
+//				$this->db->where('country', 999);
+//				$query = $this->db->get('reseller');
+//			}
 
 			return $query->result();
 		}
