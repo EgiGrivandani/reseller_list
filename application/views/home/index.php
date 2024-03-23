@@ -42,7 +42,7 @@ $assets = base_url('assets/home/');
                 <div class="row d-flex justify-content-center align-items-center">
                     <div class="col-md-8 ">
                         <div class="country ">
-                            <iconify-icon icon="ic:round-flag"></iconify-icon>
+							<iconify-icon icon="clarity:world-solid-badged"></iconify-icon>
                             <span>WORLWIDE</span>
                         </div>
                     </div>
@@ -50,56 +50,71 @@ $assets = base_url('assets/home/');
             </div>
             <div class="card-list">
                 <div class="row">
-                    <div class="col-md-4">
+					<?php foreach ($worldwide as $row):?>
+                    	<div class="col-md-4">
                         <div class="card worldwide">
                             <div class="cards">
                                 <div class="header-card">
-                                    WWW.GSMSERVER.COM
+                                    <?= $row->company?>
                                 </div>
                                 <div class="content-card">
                                     <div class="list-card">
                                         <p class="title-list">Full Name :</p>
-                                        <p class="dynamic-list">Arlene McCoy</p>
+                                        <p class="dynamic-list"><?= $row->name?></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Phone Number : </p>
-                                        <p class="dynamic-list">(907) 555-0101</p>
+                                        <p class="dynamic-list"><?= $row->phone_number?></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Email : </p>
-                                        <p class="dynamic-list">info@electrocomponents.com</p>
+                                        <p class="dynamic-list"><?= $row->email?></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Website : </p>
-                                        <p class="dynamic-list">www.electrocomponents.com</p>
+                                        <p class="dynamic-list"><?= $row->website?></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Payment Method : </p>
-                                        <p class="dynamic-list">Visa, MasterCard</p>
+                                        <p class="dynamic-list"><?= $row->payment_option?></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Address :</p>
-                                        <p class="dynamic-list">3891 Ranchview Dr. Richardson, California 62639</p>
+                                        <p class="dynamic-list"><?= $row->address?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="" title="Whatsapp">
-                                    <iconify-icon icon="mingcute:whatsapp-fill" width="24" height="24"></iconify-icon>
-                                </a>
-                                <a href="" title="Facebook">
-                                    <iconify-icon icon="ic:outline-facebook" width="24" height="24"></iconify-icon>
-                                </a>
-                                <a href="" title="Telegram">
-                                    <iconify-icon icon="ic:outline-telegram" width="24" height="24"></iconify-icon>
-                                </a>
-                                <a href="" title="Instagram">
-                                    <iconify-icon icon="ant-design:instagram-filled" width="24" height="24">
-                                    </iconify-icon>
-                                </a>
+
+								<?php if(!empty($row->whatsapp)):?>
+									<a href="<?=$row->whatsapp?>" title="Whatsapp" target="_blank">
+										<iconify-icon icon="mingcute:whatsapp-fill" width="24" height="24"></iconify-icon>
+									</a>
+								<?php endif;?>
+
+								<?php if(!empty($row->facebook)):?>
+									<a href="<?=$row->facebook?>" title="Facebook" target="_blank">
+										<iconify-icon icon="ic:outline-facebook" width="24" height="24"></iconify-icon>
+									</a>
+								<?php endif;?>
+
+								<?php if(!empty($row->telegram)):?>
+									<a href="<?=$row->telegram?>" title="Telegram" target="_blank">
+										<iconify-icon icon="ic:outline-telegram" width="24" height="24"></iconify-icon>
+									</a>
+								<?php endif;?>
+
+								<?php if(!empty($row->instagram)):?>
+									<a href="<?=$row->instagram?>" title="Instagram" target="_blank">
+										<iconify-icon icon="ant-design:instagram-filled" width="24" height="24">
+										</iconify-icon>
+									</a>
+								<?php endif;?>
+
                             </div>
                         </div>
                     </div>
+					<?php endforeach;?>
                 </div>
             </div>
         </div>

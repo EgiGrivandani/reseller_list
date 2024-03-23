@@ -11,6 +11,7 @@ class Home extends CI_Controller
 
 	public function index(){
 		$data['title']      = 'Home';
+		$data['worldwide']	= $this->M_home->worldwide_list();
 		$this->load->view('home/index', $data);
 	}
 

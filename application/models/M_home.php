@@ -47,4 +47,16 @@ class M_home extends CI_Model
 			$query = $this->db->get();
 			return $query->result();
 		}
+
+
+	public function worldwide_list(){
+		$this->db->select('*');
+		$this->db->from('reseller');
+		$this->db->where('status', 1);
+		$this->db->where('country', 999);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }

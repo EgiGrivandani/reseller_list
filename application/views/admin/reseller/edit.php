@@ -76,6 +76,14 @@
 											<li class="d-inline-block me-2 mb-1">
 												<div class="form-check">
 													<div class="custom-control custom-checkbox">
+														<input type="checkbox" class="form-check-input form-check-primary" name="customCheck" id="customColorCheck6" value="Local Money" onclick="handleCheckboxClick(this)">
+														<label class="form-check-label" for="customColorCheck6">Local Money</label>
+													</div>
+												</div>
+											</li>
+											<li class="d-inline-block me-2 mb-1">
+												<div class="form-check">
+													<div class="custom-control custom-checkbox">
 														<input type="checkbox" class="form-check-input form-check-primary" name="customCheck" id="customColorCheck1" value="Paypal" onclick="handleCheckboxClick(this)">
 														<label class="form-check-label" for="customColorCheck1">Paypal</label>
 													</div>
@@ -238,6 +246,9 @@
 		}
 		if (inputValue.includes("WesternUnion")) {
 			$('#customColorCheck5').prop('checked', true);
+		}
+		if (inputValue.includes("Local Money")) {
+			$('#customColorCheck6').prop('checked', true);
 		}
 
 	}
