@@ -146,6 +146,11 @@ body {
   color: var(--color-text-blue);
 }
 
+.card-list .row{
+	display: flex;
+	justify-content: center;
+}
+
 .card-list .card {
   border: none;
   box-shadow: 2px 0px 4px 0 rgba(52, 103, 156, 0.15);
