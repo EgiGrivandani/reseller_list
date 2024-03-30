@@ -34,7 +34,7 @@ class M_admin extends CI_Model
 
 	public function reseller_post(){
 		$fname = $this->input->post('fname', true);
-		$email = $this->input->post('email', true);
+		$email = '-';
 		$company = $this->input->post('company', true);
 		$address = $this->input->post('address', true);
 		$country = $this->input->post('country', true);
@@ -69,7 +69,7 @@ class M_admin extends CI_Model
 	public function reseller_put(){
 		$idInput = $this->input->post('idInput', true);
 		$fname = $this->input->post('fname', true);
-		$email = $this->input->post('email', true);
+		$email = '-';
 		$company = $this->input->post('company', true);
 		$address = $this->input->post('address', true);
 		$country = $this->input->post('country', true);

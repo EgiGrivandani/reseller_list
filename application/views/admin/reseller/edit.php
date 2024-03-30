@@ -21,12 +21,6 @@
 							</div>
 							<div class="col-12">
 								<div class="form-group mandatory">
-									<label for="email" class="form-label">Email</label>
-									<input type="email" id="email" class="form-control" name="email" placeholder="Email" autocomplete="off" value="<?=$list->email?>">
-								</div>
-							</div>
-							<div class="col-12">
-								<div class="form-group mandatory">
 									<label for="company" class="form-label">Company</label>
 									<input type="text" id="company" class="form-control" name="company" placeholder="company" value="<?=$list->company?>">
 								</div>

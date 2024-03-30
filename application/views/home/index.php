@@ -67,10 +67,6 @@ $assets = base_url('assets/home/');
                                         <p class="dynamic-list"><?= $row->phone_number?></p>
                                     </div>
                                     <div class="list-card">
-                                        <p class="title-list">Email : </p>
-                                        <p class="dynamic-list"><?= $row->email?></p>
-                                    </div>
-                                    <div class="list-card">
                                         <p class="title-list">Website : </p>
                                         <p class="dynamic-list"><?= $row->website?></p>
                                     </div>
@@ -211,8 +207,6 @@ $assets = base_url('assets/home/');
     let card_fullname = '';
     let cardNo_3 = '</p></div><div class="list-card"><p class="title-list">Phone Number : </p><p class="dynamic-list">';
     let card_phone = '';
-    let cardNo_4 = '</p></div><div class="list-card"><p class="title-list">Email : </p><p class="dynamic-list">';
-    let card_email = '';
     let cardNo_5 = '</p></div><div class="list-card"><p class="title-list">Website : </p><p class="dynamic-list">';
     let card_website = '';
     let cardNo_6 =
@@ -257,8 +251,6 @@ $assets = base_url('assets/home/');
             html += item.name;
             html += cardNo_3;
             html += item.phone_number;
-            html += cardNo_4;
-            html += item.email;
             html += cardNo_5;
             html += item.website;
             html += cardNo_6;

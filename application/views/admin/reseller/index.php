@@ -17,7 +17,6 @@
 						<tr>
 							<th>Date</th>
 							<th>Name</th>
-							<th>Email</th>
 							<th>Phone</th>
 							<th>Company</th>
 							<th>Sosial Media</th>
@@ -40,7 +39,6 @@
 							<tr>
 								<td><?=$row->date_created?></td>
 								<td><?=$row->name?></td>
-								<td><?=$row->email?></td>
 								<td><?=$row->phone_number?></td>
 								<td><?=$row->company?></td>
 								<td>

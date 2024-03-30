@@ -64,7 +64,6 @@ class Admin extends CI_Controller
 
 
 		$this->form_validation->set_rules('fname', 'Full name', 'trim|required');
-		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('company', 'company', 'trim|required');
 		$this->form_validation->set_rules('address', 'address', 'trim|required');
 		$this->form_validation->set_rules('country', 'country', 'trim|required');
@@ -97,7 +96,6 @@ class Admin extends CI_Controller
 
 		$this->form_validation->set_rules('idInput', 'id Input', 'trim|required');
 		$this->form_validation->set_rules('fname', 'Full name', 'trim|required');
-		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('company', 'company', 'trim|required');
 		$this->form_validation->set_rules('address', 'address', 'trim|required');
 		$this->form_validation->set_rules('country', 'country', 'trim|required');
