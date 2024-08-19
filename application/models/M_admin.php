@@ -4,9 +4,65 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_admin extends CI_Model
 {
+	private function _updateProfile($data, $banner){
 
-	public function email_get($email)
-	{
+		$path       = 'assets/profile/';
+		$default    = 'image.png';
+
+		$config['upload_path']          = FCPATH . '/' . $path;
+		$config['allowed_types']        = 'jpg|jpeg|png';
+		$config['encrypt_name']         = true;
+		$config['max_size']             = 3000; // 9MB
+
+		$gambar_lama                    = $banner;
+		$this->load->library('upload', $config);
+
+		if ($data == 'image') {
+			if ($gambar_lama != $default) {
+				unlink($path . $gambar_lama);
+			}
+		}
+
+		$this->upload->initialize($config);
+		if (!empty($_FILES['image']['name'])) {
+			if ($this->upload->do_upload($data)) {
+				$file_name = $this->upload->data("file_name");
+
+				$config['image_library']    = 'gd2';
+				$config['source_image']     = $path . $file_name;
+				$config['maintain_ratio']   = true;
+				$config['width']            = 400;
+				$config['height']           = 400;
+
+				$this->load->library('image_lib', $config);
+
+				if ($this->image_lib->resize()) {
+					return $file_name;
+				} else {
+					unlink($path . $file_name);
+					return $default;
+				}
+			} else {
+				return $default;
+			}
+		} else {
+			return $default;
+		}
+
+	}
+	private function _deleteIMAGE($image){
+		$path       = 'assets/profile/';
+		$default    = 'image.png';
+		if ($image != $default) {
+			$full_path = FCPATH . $path . $image;
+			if (file_exists($full_path)) {
+				unlink($full_path);
+			}
+		}
+	}
+
+
+	public function email_get($email){
 		$this->db->select('*');
 		$this->db->from('admin');
 		$this->db->where('email', $email);
@@ -62,7 +118,11 @@ class M_admin extends CI_Model
 			'phone_number'	=> $phone,
 			'country'	=> $country
 		);
-
+		if (!empty($_FILES["image"]["name"])) {
+			$image = 'image.png';
+			$image   = $this->_updateProfile('image', $image);
+			$data['image'] = $image;
+		}
 		return $this->db->insert('reseller', $data);
 	}
 
@@ -98,6 +158,12 @@ class M_admin extends CI_Model
 				'phone_number'	=> $phone,
 				'country'	=> $country
 			);
+			if (!empty($_FILES["image"]["name"])) {
+				$oldImage = $check->image;
+				$image   = $this->_updateProfile('image', $oldImage);
+				$data['image'] = $image;
+			}
+
 			$this->db->where('id_reseller', $idInput);
 			return $this->db->update('reseller', $data);
 		}else{
@@ -111,7 +177,8 @@ class M_admin extends CI_Model
 		return $this->db->update('reseller');
 	}
 
-	public function reseller_del($id){
+	public function reseller_del($id, $oldImage){
+		$this->_deleteIMAGE( $oldImage);
 		$this->db->where('id_reseller', $id);
 		return $this->db->delete('reseller');
 	}

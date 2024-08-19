@@ -4,8 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
 	protected $arr  = '';
-	public function __construct()
-	{
+	public function __construct(){
 		parent::__construct();
 		$this->load->model('M_admin');
 		$this->load->model('Auth_model');
@@ -160,7 +159,8 @@ class Admin extends CI_Controller
 		$id = $this->input->post('id', true);
 		$check = $this->M_admin->resellerById_get($id);
 		if($check){
-			$delete = $this->M_admin->reseller_del($id);
+			$oldImage = $check->image;
+			$delete = $this->M_admin->reseller_del($id, $oldImage);
 			if($delete){
 				$message = 'success';
 			}else{

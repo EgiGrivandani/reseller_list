@@ -12,7 +12,8 @@ $assets = base_url('assets/home/');
     <title>Seller Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?=$assets?>/css/style.css">
+    <link rel="stylesheet" href="<?=$assets?>css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </head>
@@ -22,7 +23,7 @@ $assets = base_url('assets/home/');
         <div class="container">
             <div class="content-header">
                 <div class="image">
-                    <img src="<?=$assets?>/image/logo.png" alt="">
+                    <img src="<?=$assets?>image/logo.png" alt="">
                 </div>
                 <div class="text">
                     <p class="title">Our Seller</p>
@@ -36,85 +37,82 @@ $assets = base_url('assets/home/');
             </div>
         </div>
     </section>
-    <section class="list-seller">
-        <div class="container">
-            <div class="header-list">
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-md-8 ">
-                        <div class="country ">
-							<iconify-icon icon="clarity:world-solid-badged"></iconify-icon>
-                            <span>WORLWIDE</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-list">
-                <div class="row">
+	<section class="list-seller">
+		<div class="container">
+			<div class="header-list">
+				<div class="row d-flex justify-content-center align-items-center">
+					<div class="col-md-8 ">
+						<div class="country ">
+							<i class="ti ti-world"></i>
+							<span>WORLWIDE</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-list">
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
 					<?php foreach ($worldwide as $row):?>
-                    	<div class="col-md-4">
-                        <div class="card worldwide">
-                            <div class="cards">
-                                <div class="header-card">
-                                    <?= $row->company?>
-                                </div>
-                                <div class="content-card">
-                                    <div class="list-card">
-                                        <p class="title-list">Full Name :</p>
-                                        <p class="dynamic-list"><?= $row->name?></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Phone Number : </p>
-                                        <p class="dynamic-list"><?= $row->phone_number?></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Website : </p>
-                                        <p class="dynamic-list"><?= $row->website?></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Payment Method : </p>
-                                        <p class="dynamic-list"><?= $row->payment_option?></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Address :</p>
-                                        <p class="dynamic-list"><?= $row->address?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-
-								<?php if(!empty($row->whatsapp)):?>
-									<a href="<?=$row->whatsapp?>" title="Whatsapp" target="_blank">
-										<iconify-icon icon="mingcute:whatsapp-fill" width="24" height="24"></iconify-icon>
-									</a>
-								<?php endif;?>
-
-								<?php if(!empty($row->facebook)):?>
-									<a href="<?=$row->facebook?>" title="Facebook" target="_blank">
-										<iconify-icon icon="ic:outline-facebook" width="24" height="24"></iconify-icon>
-									</a>
-								<?php endif;?>
-
-								<?php if(!empty($row->telegram)):?>
-									<a href="<?=$row->telegram?>" title="Telegram" target="_blank">
-										<iconify-icon icon="ic:outline-telegram" width="24" height="24"></iconify-icon>
-									</a>
-								<?php endif;?>
-
-								<?php if(!empty($row->instagram)):?>
-									<a href="<?=$row->instagram?>" title="Instagram" target="_blank">
-										<iconify-icon icon="ant-design:instagram-filled" width="24" height="24">
-										</iconify-icon>
-									</a>
-								<?php endif;?>
-
-                            </div>
-                        </div>
-                    </div>
+						<div class="col">
+							<div class="card worldwide">
+								<div class="cards">
+									<div class="header-card">
+										<div>
+											<img src="<?= base_url('assets/profile/'.$row->image)?>" alt="">
+										</div>
+										<?= $row->company?>
+									</div>
+									<div class="content-card">
+										<div class="list-card">
+											<p class="title-list">Full Name :</p>
+											<p class="dynamic-list"><?= $row->name?></p>
+										</div>
+										<div class="list-card">
+											<p class="title-list">Phone Number : </p>
+											<p class="dynamic-list"><?= $row->phone_number?></p>
+										</div>
+										<div class="list-card">
+											<p class="title-list">Website : </p>
+											<p class="dynamic-list"><?= $row->website?></p>
+										</div>
+										<div class="list-card">
+											<p class="title-list">Payment Method : </p>
+											<p class="dynamic-list"><?= $row->payment_option?></p>
+										</div>
+										<div class="list-card">
+											<p class="title-list">Address :</p>
+											<p class="dynamic-list"><?= $row->address?></p>
+										</div>
+									</div>
+									<div class="gradient-blur"></div>
+									<span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
+								</div>
+								<div class="card-footer">
+									<div class="row">
+										<div class="col-md">
+											<?php if(!empty($row->whatsapp)):?>
+												<a class="btn  btn-wa" href="<?=$row->whatsapp?>" title="Whatsapp"
+												   target="_blank">
+													<i class="ti ti-brand-whatsapp "></i> WA Order
+												</a>
+											<?php endif;?>
+										</div>
+										<div class="col-md">
+											<?php if(!empty($row->telegram)):?>
+												<a class="btn btn-tele  " href="<?=$row->telegram?>" title="Telegram"
+												   target="_blank">
+													<i class="ti ti-brand-whatsapp "></i> Tele Order
+												</a>
+											<?php endif;?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					<?php endforeach;?>
-                </div>
-            </div>
-        </div>
-    </section>
+				</div>
+			</div>
+		</div>
+	</section>
     <section class="list-seller" id="sellerContent" style="display: none">
         <div class="container">
 			<div class="text-center mb-3 ">
@@ -132,32 +130,11 @@ $assets = base_url('assets/home/');
                             <span id="countrySUB">UNDEFINED</span>
                         </div>
                     </div>
-                    <!-- <div class="col-md-4"> -->
-                    <!--                        <form id="searchForm">-->
-                    <!--                            <div class="search">-->
-                    <!--                                <div class="searchbar">-->
-                    <!--                                    <div class="searchbar-wrapper">-->
-                    <!--                                            <div class="searchbar-center">-->
-                    <!--                                                <div class="searchbar-input-spacer"></div>-->
-                    <!--                                                <input type="text" class="searchbar-input" id="searchFormValue" name="search" autocapitalize="off"-->
-                    <!--                                                       autocomplete="off" title="Search" role="combobox"-->
-                    <!--                                                       placeholder="Search name">-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="searchbar-right">-->
-                    <!--                                                <a href="">-->
-                    <!--                                                    <iconify-icon class="voice-search" icon="mingcute:search-line" width="22" height="22"></iconify-icon>-->
-                    <!--                                                </a>-->
-                    <!--                                            </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </form>-->
-                    <!-- </div> -->
                 </div>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="notfound text-center" style="display: none;" id="searchNOTFOUND">
-                    <img src="<?=$assets?>/image/notfound.png" alt="">
+                    <img src="<?=$assets?>image/notfound.png" alt="">
                     <div>
                         <p class="text-notfound">Sorry, No results found for <span id="keySearch">"XXXXX"</span> </p>
                         <a href="<?= base_url()?>" class="btn btn-home">Refresh Page</a>
@@ -177,9 +154,9 @@ $assets = base_url('assets/home/');
                     </div>
                     <?php endfor;?>
                 </div>
-                <div class="row" id="contentList">
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3" id="contentList">
 
-                </div>
+				</div>
             </div>
         </div>
     </section>
@@ -188,7 +165,7 @@ $assets = base_url('assets/home/');
         <section class="footer">
             <div class="container">
                 <p class="content"> Copyright &copy; 2024
-                    PT. Borneo World Wide.s
+                    PT. Borneo World Wide.
                     All rights reserved.</p>
         </section>
     </footer>
@@ -196,34 +173,75 @@ $assets = base_url('assets/home/');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.0.0/dist/iconify-icon.min.js"></script>
 
 
     <script>
-    let cardNo_1 = '<div class="col-md-4"><div class="card"><div class="cards"><div class="header-card">';
-    let card_company = '';
-    let cardNo_2 =
-        '</div><div class="content-card"><div class="list-card"><p class="title-list">Full Name :</p><p class="dynamic-list">';
-    let card_fullname = '';
-    let cardNo_3 = '</p></div><div class="list-card"><p class="title-list">Phone Number : </p><p class="dynamic-list">';
-    let card_phone = '';
-    let cardNo_5 = '</p></div><div class="list-card"><p class="title-list">Website : </p><p class="dynamic-list">';
-    let card_website = '';
-    let cardNo_6 =
-        '</p></div><div class="list-card"><p class="title-list">Payment Method : </p><p class="dynamic-list">';
-    let card_payment = '';
-    let cardNo_7 = '</p></div><div class="list-card"><p class="title-list">Address :</p><p class="dynamic-list">';
-    let card_address = '';
-    let cardNo_8 = '</p></div></div></div><div class="card-footer">';
+		let card_template_start = `
+    <div class="col">
+        <div class="card worldwide">
+            <div class="cards">
+                <div class="header-card">
+                    <div>
+                        <img src="`;
 
-    let footer_wa = '<iconify-icon icon="mingcute:whatsapp-fill" width="24" height="24"></iconify-icon>';
-    let footer_fb = '<iconify-icon icon="ic:outline-facebook" width="24" height="24"></iconify-icon>';
-    let footer_tele = '<iconify-icon icon="ic:outline-telegram" width="24" height="24"></iconify-icon>';
-    let footer_ig = '<iconify-icon icon="ant-design:instagram-filled" width="24" height="24"></iconify-icon>';
+		let card_template_company = `"></div>`;
 
-    let cardNo_9 = '</div></div></div>';
+		let card_template_mid = `</div>
+                <div class="content-card">
+                    <div class="list-card">
+                        <p class="title-list">Full Name :</p>
+                        <p class="dynamic-list">`;
 
-    let bronze = 999;
+		let card_template_phone = `</p></div>
+                    <div class="list-card">
+                        <p class="title-list">Phone Number :</p>
+                        <p class="dynamic-list">`;
+
+		let card_template_website = `</p></div>
+                    <div class="list-card">
+                        <p class="title-list">Website :</p>
+                        <p class="dynamic-list">`;
+
+		let card_template_payment = `</p></div>
+                    <div class="list-card">
+                        <p class="title-list">Payment Method :</p>
+                        <p class="dynamic-list">`;
+
+		let card_template_address = `</p></div>
+                    <div class="list-card">
+                        <p class="title-list">Address :</p>
+                        <p class="dynamic-list">`;
+
+		let card_template_end = `</p></div>
+                </div>
+                <div class="gradient-blur"></div>
+                <span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md">`;
+
+		let footer_wa = `
+                        <a class="btn btn-wa" href="`;
+		let footer_wa_icon = `" title="Whatsapp" target="_blank">
+                            <i class="ti ti-brand-whatsapp "></i> WA Order
+                        </a>`;
+
+		let footer_tele = `
+                    <div class="col-md">
+                        <a class="btn btn-tele" href="`;
+		let footer_tele_icon = `" title="Telegram" target="_blank">
+                            <i class="ti ti-brand-telegram"></i> Tele Order
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`;
+
+
+		let bronze = 999;
 
     function loadingCard(type) {
         if (type == 1) {
@@ -242,43 +260,27 @@ $assets = base_url('assets/home/');
     }
 
     function metaResponse(response) {
+		var base_url = "<?= base_url('assets/profile/') ?>";
         let html = '';
         response.list.forEach(function(item) {
             bronze = item.country;
-            html += cardNo_1;
-            html += item.company;
-            html += cardNo_2;
-            html += item.name;
-            html += cardNo_3;
-            html += item.phone_number;
-            html += cardNo_5;
-            html += item.website;
-            html += cardNo_6;
-            html += item.payment_option;
-            html += cardNo_7;
-            html += item.address;
-            html += cardNo_8;
-            if (item.whatsapp !== '') {
-                html += '<a href="' + item.whatsapp + '" title="Whatsapp" target="_blank">';
-                html += footer_wa;
-                html += '</a>'
-            }
-            if (item.facebook !== '') {
-                html += '<a href="' + item.facebook + '" title="Facebook" target="_blank">';
-                html += footer_fb;
-                html += '</a>'
-            }
-            if (item.telegram !== '') {
-                html += '<a href="' + item.telegram + '" title="telegram" target="_blank">';
-                html += footer_tele;
-                html += '</a>'
-            }
-            if (item.instagram !== '') {
-                html += '<a href="' + item.instagram + '" title="instagram" target="_blank">';
-                html += footer_ig;
-                html += '</a>'
-            }
-            html += cardNo_9;
+			html += card_template_start;
+			html += base_url + item.image; // Mengganti base_url dengan path gambar
+			html += card_template_company + item.company + card_template_mid;
+			html += item.name + card_template_phone;
+			html += item.phone_number + card_template_website;
+			html += item.website + card_template_payment;
+			html += item.payment_option + card_template_address;
+			html += item.address + card_template_end;
+
+			if (item.whatsapp !== '') {
+				html += footer_wa + item.whatsapp + footer_wa_icon;
+			}
+			if (item.telegram !== '') {
+				html += footer_tele + item.telegram + footer_tele_icon;
+			}
+
+			html += '</div></div></div>'; // Tutup div footer dan card
         });
         if (html !== '') {
             $('#contentList').html(html)
@@ -305,30 +307,93 @@ $assets = base_url('assets/home/');
         });
     }
 
-    // $('#searchForm').submit(function(e) {
-    // 	e.preventDefault();
-    //
-    // 	let searchVal = $('#searchFormValue').value;
-    // 	$.ajax({
-    // 		url: base_url + 'Home/search',
-    // 		type: 'post',
-    // 		dataType: 'json',
-    // 		data:{
-    // 			id: bronze,
-    // 			search: searchVal
-    // 		}
-    // 		success: function(response) {
-    //
-    //
-    // 			metaResponse(response)
-    // 		}
-    // 	});
-    // })
     $(document).ready(function() {
         loadingCard(1)
         listreseller()
     })
     </script>
+
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const cards = document.querySelectorAll('.card');
+
+			const checkScrollability = card => {
+				const contentCard = card.querySelector('.cards');
+				const seeMoreButton = card.querySelector('.see-more');
+				const gradientBlur = card.querySelector('.gradient-blur');
+				const cardFooter = card.querySelector('.card-footer');
+				const buttonsInFooter = cardFooter ? cardFooter.querySelectorAll('.btn') : [];
+
+				let bottomValue = '30px';
+				let heightValue = '40px';
+
+				if (buttonsInFooter.length > 0) {
+					if (window.matchMedia('(max-width: 767px)').matches) {
+						if (buttonsInFooter.length === 1) {
+							bottomValue = '75px';
+						} else if (buttonsInFooter.length === 2) {
+							bottomValue = '90px';
+						}
+					} else {
+						bottomValue = '60px';
+					}
+					heightValue = '70px';
+				}
+
+
+
+				seeMoreButton.style.bottom = bottomValue;
+				if (gradientBlur) gradientBlur.style.height = heightValue;
+
+				seeMoreButton.style.display = contentCard.scrollHeight > contentCard.clientHeight ?
+					'block' :
+					'none';
+			};
+
+			cards.forEach(card => {
+				checkScrollability(card);
+
+				card.querySelector('.see-more').addEventListener('click', function () {
+					const contentCard = card.querySelector('.cards');
+					card.classList.toggle('expanded');
+					const scrollTo = card.classList.contains('expanded') ? contentCard
+						.scrollHeight : 0;
+					const buttonText = card.classList.contains('expanded') ? 'See Less' :
+						'See More';
+					const buttonIcon = card.classList.contains('expanded') ? 'ti-chevrons-up' :
+						'ti-chevrons-down';
+
+					setTimeout(() => {
+						contentCard.scrollTo({
+							top: scrollTo,
+							behavior: 'smooth'
+						});
+					}, 300);
+					this.innerHTML = `<i class="ti ${buttonIcon} me-1"></i> ${buttonText}`;
+				});
+
+				card.querySelector('.cards').addEventListener('scroll', function () {
+					this.style.padding = this.scrollTop > 0 ? '1rem 1rem 2rem 1rem' : '1rem';
+				});
+
+				card.addEventListener('mouseover', () => {
+					const gradientBlur = card.querySelector('.gradient-blur');
+					if (gradientBlur) gradientBlur.remove();
+				});
+
+				card.addEventListener('mouseout', () => {
+					const gradientBlur = card.querySelector('.gradient-blur');
+					if (!gradientBlur) {
+						const newGradientBlur = document.createElement('div');
+						newGradientBlur.classList.add('gradient-blur');
+						card.appendChild(newGradientBlur);
+					}
+				});
+			});
+		});
+	</script>
+
 </body>
 
 </html>

@@ -19,6 +19,7 @@
 							<th>Name</th>
 							<th>Phone</th>
 							<th>Company</th>
+							<th>Profile</th>
 							<th>Sosial Media</th>
 							<th>Country</th>
 							<th>Status</th>
@@ -41,6 +42,9 @@
 								<td><?=$row->name?></td>
 								<td><?=$row->phone_number?></td>
 								<td><?=$row->company?></td>
+								<td>
+									<img src="<?= base_url('assets/profile/'.$row->image)?>" alt="<?=$row->name?>" style="width: 40px;">
+								</td>
 								<td>
 									<div class="btn-group">
 										<?php if(!empty($row->facebook)): ?>

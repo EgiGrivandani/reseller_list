@@ -9,7 +9,7 @@
 	<div class="card">
 		<div class="card-content">
 			<div class="card-body">
-				<form class="form form-vertical" id="formInput">
+				<form class="form form-vertical" id="formInput" enctype="multipart/form-data">
 					<div class="form-body">
 						<div class="row">
 							<div class="col-12">
@@ -53,6 +53,13 @@
 								<div class="form-group">
 									<label for="website">Website</label>
 									<input type="url" id="website" class="form-control" name="website" placeholder="https://">
+								</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+									<label for="image" class="form-label">Profile</label>
+									<input type="file" id="image" class="form-control" name="image" placeholder="image">
 								</div>
 							</div>
 
@@ -181,7 +188,7 @@
 	$('#formInput').submit(function(e) {
 		e.preventDefault();
 		$('#btnsbmt').prop('disabled', true);
-		var formData = $(this).serialize();
+		var formData = new FormData(this);
 
 		var base_url = "<?= base_url() ?>";
 		$.ajax({
@@ -189,6 +196,8 @@
 			type: 'post',
 			dataType: 'json',
 			data: formData,
+			contentType: false,
+			processData: false,
 			success: function(response) {
 				if (response.status == false) {
 					Swal.fire(
