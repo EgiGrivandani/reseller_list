@@ -13,7 +13,7 @@ $assets = base_url('assets/home/');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="<?=$assets?>css/style.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </head>
@@ -37,91 +37,94 @@ $assets = base_url('assets/home/');
             </div>
         </div>
     </section>
-	<section class="list-seller">
-		<div class="container">
-			<div class="header-list">
-				<div class="row d-flex justify-content-center align-items-center">
-					<div class="col-md-8 ">
-						<div class="country ">
-							<i class="ti ti-world"></i>
-							<span>WORLWIDE</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card-list">
-				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
-					<?php foreach ($worldwide as $row):?>
-						<div class="col">
-							<div class="card worldwide">
-								<div class="cards">
-									<div class="header-card">
-										<div>
-											<img src="<?= base_url('assets/profile/'.$row->image)?>" alt="">
+    <section class="list-seller">
+        <div class="container">
+            <div class="header-list">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-md-8 ">
+                        <div class="country ">
+                            <i class="ti ti-world"></i>
+                            <span>WORLWIDE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+                    <?php foreach ($worldwide as $row):?>
+                    <div class="col">
+                        <div class="card worldwide">
+                            <div class="cards">
+                                <div class="header-card">
+                                    <div>
+                                         <img src="<?= base_url('assets/profile/'.$row->image)?>" alt="">
+                                    </div>
+                                    <?= $row->company?>
+                                </div>
+                                <div class="content-card">
+                                    <div class="list-card">
+                                        <p class="title-list">Full Name :</p>
+                                        <p class="dynamic-list"><?= $row->name?></p>
+                                    </div>
+                                    <div class="list-card">
+                                        <p class="title-list">Phone Number : </p>
+                                        <p class="dynamic-list"><?= $row->phone_number?></p>
+                                    </div>
+                                    <div class="list-card">
+                                        <p class="title-list">Website : </p>
+                                        <p class="dynamic-list"><?= $row->website?></p>
+                                    </div>
+                                    <div class="list-card">
+                                        <p class="title-list">Payment Method : </p>
+                                        <p class="dynamic-list"><?= $row->payment_option?></p>
+                                    </div>
+                                    <div class="list-card">
+                                        <p class="title-list">Address :</p>
+                                        <p class="dynamic-list"><?= $row->address?></p>
+                                    </div>
+                                </div>
+                                <div class="gradient-blur"></div>
+                                <span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+									<?php if(!empty($row->whatsapp)):?>
+										<div class="col">
+											<a class="btn  btn-wa" href="<?=$row->whatsapp?>" title="Whatsapp"
+												target="_blank">
+												<i class="ti ti-brand-whatsapp "></i> WA Order
+											</a>
 										</div>
-										<?= $row->company?>
-									</div>
-									<div class="content-card">
-										<div class="list-card">
-											<p class="title-list">Full Name :</p>
-											<p class="dynamic-list"><?= $row->name?></p>
+									<?php endif;?>
+
+									<?php if(!empty($row->telegram)):?>
+										<div class="col">
+											<a class="btn btn-tele  " href="<?=$row->telegram?>" title="Telegram"
+												target="_blank">
+												<i class="ti ti-brand-whatsapp "></i> Tele Order
+											</a>
 										</div>
-										<div class="list-card">
-											<p class="title-list">Phone Number : </p>
-											<p class="dynamic-list"><?= $row->phone_number?></p>
-										</div>
-										<div class="list-card">
-											<p class="title-list">Website : </p>
-											<p class="dynamic-list"><?= $row->website?></p>
-										</div>
-										<div class="list-card">
-											<p class="title-list">Payment Method : </p>
-											<p class="dynamic-list"><?= $row->payment_option?></p>
-										</div>
-										<div class="list-card">
-											<p class="title-list">Address :</p>
-											<p class="dynamic-list"><?= $row->address?></p>
-										</div>
-									</div>
-									<div class="gradient-blur"></div>
-									<span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
-								</div>
-								<div class="card-footer">
-									<div class="row">
-										<div class="col-md">
-											<?php if(!empty($row->whatsapp)):?>
-												<a class="btn  btn-wa" href="<?=$row->whatsapp?>" title="Whatsapp"
-												   target="_blank">
-													<i class="ti ti-brand-whatsapp "></i> WA Order
-												</a>
-											<?php endif;?>
-										</div>
-										<div class="col-md">
-											<?php if(!empty($row->telegram)):?>
-												<a class="btn btn-tele  " href="<?=$row->telegram?>" title="Telegram"
-												   target="_blank">
-													<i class="ti ti-brand-whatsapp "></i> Tele Order
-												</a>
-											<?php endif;?>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php endforeach;?>
-				</div>
-			</div>
-		</div>
-	</section>
+									<?php endif;?>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="list-seller" id="sellerContent" style="display: none">
         <div class="container">
-			<div class="text-center mb-3 ">
-				<p class="" style=" border-radius: 0.3rem; padding: 5px 10px; display: inline-block; font-size: clamp(12px, 8vw, 22px); font-weight: 600; background-color: #e7eef7; color: #182639;
-                    text-transform: uppercase; box-shadow: 0 2px 4px 0 rgba(52, 103, 156, 0.15);">
-					The seller list below provides
-					payment via
-					local bank transfer</p>
-			</div>
+            <div class="text-center mb-3 ">
+                <p class=""
+                    style=" border-radius: 0.3rem; padding: 5px 10px; display: inline-block; font-size: clamp(12px, 8vw, 22px); font-weight: 600; background-color: #e7eef7; color: #182639;
+                    text-transform: uppercase; text-shadow: 0 2px 2px #00000040; box-shadow: 0 2px 4px 0 rgba(52, 103, 156, 0.15);">
+                    The seller list below provides
+                    payment via
+                    local bank transfer</p>
+            </div>
             <div class="header-list">
                 <div class="row  d-flex justify-content-center align-items-center">
                     <div class="col-md-8">
@@ -154,9 +157,9 @@ $assets = base_url('assets/home/');
                     </div>
                     <?php endfor;?>
                 </div>
-				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3" id="contentList">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3" id="contentList">
 
-				</div>
+                </div>
             </div>
         </div>
     </section>
@@ -176,72 +179,76 @@ $assets = base_url('assets/home/');
 
 
     <script>
-		let card_template_start = `
-    <div class="col">
-        <div class="card worldwide">
-            <div class="cards">
-                <div class="header-card">
-                    <div>
-                        <img src="`;
+    let card_template_start = `
+<div class="col">
+    <div class="card worldwide">
+        <div class="cards">
+            <div class="header-card">
+                <div>
+                    <img src="`;
 
-		let card_template_company = `"></div>`;
+    let card_template_company = `"></div>`;
 
-		let card_template_mid = `</div>
-                <div class="content-card">
-                    <div class="list-card">
-                        <p class="title-list">Full Name :</p>
-                        <p class="dynamic-list">`;
+    let card_template_mid = `</div>
+            <div class="content-card">
+                <div class="list-card">
+                    <p class="title-list">Full Name :</p>
+                    <p class="dynamic-list">`;
 
-		let card_template_phone = `</p></div>
-                    <div class="list-card">
-                        <p class="title-list">Phone Number :</p>
-                        <p class="dynamic-list">`;
+    let card_template_phone = `</p></div>
+                <div class="list-card">
+                    <p class="title-list">Phone Number :</p>
+                    <p class="dynamic-list">`;
 
-		let card_template_website = `</p></div>
-                    <div class="list-card">
-                        <p class="title-list">Website :</p>
-                        <p class="dynamic-list">`;
+    let card_template_website = `</p></div>
+                <div class="list-card">
+                    <p class="title-list">Website :</p>
+                    <p class="dynamic-list">`;
 
-		let card_template_payment = `</p></div>
-                    <div class="list-card">
-                        <p class="title-list">Payment Method :</p>
-                        <p class="dynamic-list">`;
+    let card_template_payment = `</p></div>
+                <div class="list-card">
+                    <p class="title-list">Payment Method :</p>
+                    <p class="dynamic-list">`;
 
-		let card_template_address = `</p></div>
-                    <div class="list-card">
-                        <p class="title-list">Address :</p>
-                        <p class="dynamic-list">`;
+    let card_template_address = `</p></div>
+                <div class="list-card">
+                    <p class="title-list">Address :</p>
+                    <p class="dynamic-list">`;
 
-		let card_template_end = `</p></div>
-                </div>
-                <div class="gradient-blur"></div>
-                <span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
+    let card_template_end = `</p></div>
             </div>
-            <div class="card-footer">
-                <div class="row">
-                    <div class="col-md">`;
+            <div class="gradient-blur"></div>
+            <span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
+        </div>
+        <div class="card-footer">
+            <div class="row">`;
 
-		let footer_wa = `
-                        <a class="btn btn-wa" href="`;
-		let footer_wa_icon = `" title="Whatsapp" target="_blank">
-                            <i class="ti ti-brand-whatsapp "></i> WA Order
-                        </a>`;
+    let footer_wa = `
+                <div class="col">
+                    <a class="btn btn-wa" href="`;
 
-		let footer_tele = `
-                    <div class="col-md">
-                        <a class="btn btn-tele" href="`;
-		let footer_tele_icon = `" title="Telegram" target="_blank">
-                            <i class="ti ti-brand-telegram"></i> Tele Order
-                        </a>
-                    </div>
+    let footer_wa_icon = `" title="Whatsapp" target="_blank">
+                        <i class="ti ti-brand-whatsapp"></i> WA Order
+                    </a>
+                </div>`;
+
+    let footer_tele = `
+                <div class="col">
+                    <a class="btn btn-tele" href="`;
+
+    let footer_tele_icon = `" title="Telegram" target="_blank">
+                        <i class="ti ti-brand-telegram"></i> Tele Order
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>`;
 
 
-		let bronze = 999;
+
+    let bronze = 999;
 
     function loadingCard(type) {
         if (type == 1) {
@@ -260,32 +267,34 @@ $assets = base_url('assets/home/');
     }
 
     function metaResponse(response) {
-		var base_url = "<?= base_url('assets/profile/') ?>";
+        var base_url = "<?= base_url('assets/profile/') ?>";
         let html = '';
         response.list.forEach(function(item) {
             bronze = item.country;
-			html += card_template_start;
-			html += base_url + item.image; // Mengganti base_url dengan path gambar
-			html += card_template_company + item.company + card_template_mid;
-			html += item.name + card_template_phone;
-			html += item.phone_number + card_template_website;
-			html += item.website + card_template_payment;
-			html += item.payment_option + card_template_address;
-			html += item.address + card_template_end;
+            html += card_template_start;
+            html += base_url + item.image; // Mengganti base_url dengan path gambar
+            html += card_template_company + item.company + card_template_mid;
+            html += item.name + card_template_phone;
+            html += item.phone_number + card_template_website;
+            html += item.website + card_template_payment;
+            html += item.payment_option + card_template_address;
+            html += item.address + card_template_end;
 
-			if (item.whatsapp !== '') {
-				html += footer_wa + item.whatsapp + footer_wa_icon;
-			}
-			if (item.telegram !== '') {
-				html += footer_tele + item.telegram + footer_tele_icon;
-			}
+            if (item.whatsapp !== '') {
+                html += footer_wa + item.whatsapp + footer_wa_icon;
+            }
+            if (item.telegram !== '') {
+                html += footer_tele + item.telegram + footer_tele_icon;
+            }
 
-			html += '</div></div></div>'; // Tutup div footer dan card
+            html += '</div></div></div>'; // Tutup div footer dan card
         });
         if (html !== '') {
             $('#contentList').html(html)
             loadingCard(0)
+			seeMore();
         }
+
     }
 
     function listreseller() {
@@ -296,104 +305,116 @@ $assets = base_url('assets/home/');
             dataType: 'json',
             success: function(response) {
 
-				if(response.found){
-					$('#sellerContent').css('display', 'block');
-					$('#countrySUB').html(response.country)
+                if (response.found) {
+                    $('#sellerContent').css('display', 'block');
+                    $('#countrySUB').html(response.country)
 
-					metaResponse(response)
+                    metaResponse(response)
+                }else{
+					seeMore();
 				}
 
             }
         });
     }
 
+    function seeMore() {
+        const cards = document.querySelectorAll('.card');
+
+        const checkScrollability = card => {
+            const contentCard = card.querySelector('.cards');
+            const seeMoreButton = card.querySelector('.see-more');
+            const gradientBlur = card.querySelector('.gradient-blur');
+            const cardFooter = card.querySelector('.card-footer');
+            const buttonsInFooter = cardFooter ? cardFooter.querySelectorAll('.btn') : [];
+
+            let bottomValue = '30px';
+            let heightValue = '50px';
+
+            if (buttonsInFooter.length > 0) {
+                if (window.matchMedia('(max-width: 767px)').matches) {
+                    if (buttonsInFooter.length === 1) {
+                        bottomValue = '75px';
+                    } else if (buttonsInFooter.length === 2) {
+                        bottomValue = '90px';
+                    }
+                } else {
+                    bottomValue = '60px';
+                }
+                heightValue = '80px';
+            }
+
+            if (seeMoreButton) {
+                seeMoreButton.style.bottom = bottomValue;
+            }
+            if (gradientBlur) gradientBlur.style.height = heightValue;
+
+            if (seeMoreButton) {
+                seeMoreButton.style.display = contentCard.scrollHeight > contentCard.clientHeight ?
+                    'block' :
+                    'none';
+            }
+        };
+
+        cards.forEach(card => {
+            checkScrollability(card);
+
+            const seeMoreButton = card.querySelector('.see-more');
+            const contentCard = card.querySelector('.cards');
+
+            if (seeMoreButton) {
+                seeMoreButton.addEventListener('click', function() {
+                    card.classList.toggle('expanded');
+                    const scrollTo = card.classList.contains('expanded') ? contentCard
+                        .scrollHeight : 0;
+                    const buttonText = card.classList.contains('expanded') ? 'See Less' :
+                        'See More';
+                    const buttonIcon = card.classList.contains('expanded') ?
+                        'ti-chevrons-up' :
+                        'ti-chevrons-down';
+
+                    setTimeout(() => {
+                        contentCard.scrollTo({
+                            top: scrollTo,
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                    this.innerHTML = `<i class="ti ${buttonIcon} me-1"></i> ${buttonText}`;
+                });
+            }
+
+            if (contentCard) {
+                contentCard.addEventListener('scroll', function() {
+                    this.style.padding = this.scrollTop > 0 ? '1rem 1rem 2rem 1rem' :
+                        '1rem';
+                });
+            }
+
+            card.addEventListener('mouseover', () => {
+                const gradientBlur = card.querySelector('.gradient-blur');
+                if (gradientBlur) gradientBlur.remove();
+            });
+
+            card.addEventListener('mouseout', () => {
+                let gradientBlur = card.querySelector('.gradient-blur');
+                if (!gradientBlur) {
+                    gradientBlur = document.createElement('div');
+                    gradientBlur.classList.add('gradient-blur');
+                    card.appendChild(gradientBlur);
+                }
+                const cardFooter = card.querySelector('.card-footer');
+                const buttonsInFooter = cardFooter ? cardFooter.querySelectorAll('.btn') : [];
+                gradientBlur.style.height = buttonsInFooter.length > 0 ? '80px' : '50px';
+            });
+        });
+    }
+
+
     $(document).ready(function() {
         loadingCard(1)
         listreseller()
     })
     </script>
-
-
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			const cards = document.querySelectorAll('.card');
-
-			const checkScrollability = card => {
-				const contentCard = card.querySelector('.cards');
-				const seeMoreButton = card.querySelector('.see-more');
-				const gradientBlur = card.querySelector('.gradient-blur');
-				const cardFooter = card.querySelector('.card-footer');
-				const buttonsInFooter = cardFooter ? cardFooter.querySelectorAll('.btn') : [];
-
-				let bottomValue = '30px';
-				let heightValue = '40px';
-
-				if (buttonsInFooter.length > 0) {
-					if (window.matchMedia('(max-width: 767px)').matches) {
-						if (buttonsInFooter.length === 1) {
-							bottomValue = '75px';
-						} else if (buttonsInFooter.length === 2) {
-							bottomValue = '90px';
-						}
-					} else {
-						bottomValue = '60px';
-					}
-					heightValue = '70px';
-				}
-
-
-
-				seeMoreButton.style.bottom = bottomValue;
-				if (gradientBlur) gradientBlur.style.height = heightValue;
-
-				seeMoreButton.style.display = contentCard.scrollHeight > contentCard.clientHeight ?
-					'block' :
-					'none';
-			};
-
-			cards.forEach(card => {
-				checkScrollability(card);
-
-				card.querySelector('.see-more').addEventListener('click', function () {
-					const contentCard = card.querySelector('.cards');
-					card.classList.toggle('expanded');
-					const scrollTo = card.classList.contains('expanded') ? contentCard
-						.scrollHeight : 0;
-					const buttonText = card.classList.contains('expanded') ? 'See Less' :
-						'See More';
-					const buttonIcon = card.classList.contains('expanded') ? 'ti-chevrons-up' :
-						'ti-chevrons-down';
-
-					setTimeout(() => {
-						contentCard.scrollTo({
-							top: scrollTo,
-							behavior: 'smooth'
-						});
-					}, 300);
-					this.innerHTML = `<i class="ti ${buttonIcon} me-1"></i> ${buttonText}`;
-				});
-
-				card.querySelector('.cards').addEventListener('scroll', function () {
-					this.style.padding = this.scrollTop > 0 ? '1rem 1rem 2rem 1rem' : '1rem';
-				});
-
-				card.addEventListener('mouseover', () => {
-					const gradientBlur = card.querySelector('.gradient-blur');
-					if (gradientBlur) gradientBlur.remove();
-				});
-
-				card.addEventListener('mouseout', () => {
-					const gradientBlur = card.querySelector('.gradient-blur');
-					if (!gradientBlur) {
-						const newGradientBlur = document.createElement('div');
-						newGradientBlur.classList.add('gradient-blur');
-						card.appendChild(newGradientBlur);
-					}
-				});
-			});
-		});
-	</script>
-
 </body>
 
 </html>

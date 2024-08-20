@@ -43,7 +43,7 @@ class Home extends CI_Controller
 		$check = $this->M_home->CountryByName_get($CN);
 
 		$NC = '';
-		$CI = 105;
+		$CI = 0;
 		if($check){
 			$CI = $check->id;
 			$NC = $check->name;
