@@ -315,7 +315,7 @@ $assets = base_url('assets/home/');
                 html += footer_tele + item.telegram + footer_tele_icon;
             }
 
-            html += '</div></div></div>'; // Tutup div footer dan card
+            html += '</div></div></div></div>'; // Tutup div footer dan card
         });
         if (html !== '') {
             $('#contentList').html(html)
