@@ -182,4 +182,120 @@ class M_admin extends CI_Model
 		$this->db->where('id_reseller', $id);
 		return $this->db->delete('reseller');
 	}
+
+
+
+	//=========================BANNER===========================
+	private function _update_BANNER($data, $banner){
+
+		$path       = 'assets/banner/';
+		$default    = 'image.png';
+
+		$config['upload_path']          = FCPATH . '/' . $path;
+		$config['allowed_types']        = 'jpg|jpeg|png';
+		$config['encrypt_name']         = true;
+		$config['max_size']             = 3000; // 9MB
+
+		$gambar_lama                    = $banner;
+		$this->load->library('upload', $config);
+
+		if ($data == 'image') {
+			if ($gambar_lama != $default) {
+				unlink($path . $gambar_lama);
+			}
+		}
+
+		$this->upload->initialize($config);
+		if (!empty($_FILES['image']['name'])) {
+			if ($this->upload->do_upload($data)) {
+				$file_name = $this->upload->data("file_name");
+
+				$config['image_library']    = 'gd2';
+				$config['source_image']     = $path . $file_name;
+				$config['maintain_ratio']   = true;
+				$config['width']            = 1100;
+				$config['height']           = 400;
+
+				$this->load->library('image_lib', $config);
+
+				if ($this->image_lib->resize()) {
+					return $file_name;
+				} else {
+					unlink($path . $file_name);
+					return $default;
+				}
+			} else {
+				return $default;
+			}
+		} else {
+			return $default;
+		}
+
+	}
+	private function _deleteIMAGE_BANNER($image){
+		$path       = 'assets/banner/';
+		$default    = 'image.png';
+		if ($image != $default) {
+			$full_path = FCPATH . $path . $image;
+			if (file_exists($full_path)) {
+				unlink($full_path);
+			}
+		}
+	}
+	public function banner_get()
+	{
+		return $this->db->get('banner')->result();
+	}
+	public function banner_post(){
+		$fname = $this->input->post('fname', true);
+
+		$data = array(
+			'name'	=> $fname,
+		);
+		if (!empty($_FILES["image"]["name"])) {
+			$image = 'image.png';
+			$image   = $this->_update_BANNER('image', $image);
+			$data['image'] = $image;
+		}
+		return $this->db->insert('banner', $data);
+	}
+	public function banner_put(){
+		$idInput = $this->input->post('idInput', true);
+		$fname = $this->input->post('fname', true);
+
+
+		$check = $this->bannerById_get($idInput);
+		if($check){
+			$data = array(
+				'name'	=> $fname,
+			);
+			if (!empty($_FILES["image"]["name"])) {
+				$oldImage = $check->image;
+				$image   = $this->_update_BANNER('image', $oldImage);
+				$data['image'] = $image;
+			}
+
+			$this->db->where('id', $idInput);
+			return $this->db->update('banner', $data);
+		}else{
+			return false;
+		}
+	}
+	public function bannerById_get($id){
+		$this->db->select('*');
+		$this->db->from('banner');
+		$this->db->where('id', $id);
+		return $this->db->get()->row();
+	}
+	public function bannerStatus_put($id, $status){
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		return $this->db->update('banner');
+	}
+	public function banner_del($id, $oldImage){
+		$this->_deleteIMAGE_BANNER( $oldImage);
+		$this->db->where('id', $id);
+		return $this->db->delete('banner');
+	}
+
 }

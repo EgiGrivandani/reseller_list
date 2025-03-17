@@ -81,6 +81,12 @@
 							<span>Reseller</span>
 						</a>
 					</li>
+					<li class="sidebar-item" id="bannerNAV">
+						<a href="<?= base_url('Admin/banner')?>" class='sidebar-link'>
+							<i class="bi bi-card-image"></i>
+							<span>Banner</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item mt-5">
 						<a href="javascript:void(0)" class='sidebar-link' onclick="logoutClick(event)">

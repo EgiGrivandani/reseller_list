@@ -43,7 +43,9 @@
 								<td><?=$row->phone_number?></td>
 								<td><?=$row->company?></td>
 								<td>
-									<img src="<?= base_url('assets/profile/'.$row->image)?>" alt="<?=$row->name?>" style="width: 40px;">
+									<a href="<?= base_url('assets/profile/'.$row->image)?>" target="_blank">
+										<img src="<?= base_url('assets/profile/'.$row->image)?>" alt="<?=$row->name?>" style="width: 40px;">
+									</a>
 								</td>
 								<td>
 									<div class="btn-group">

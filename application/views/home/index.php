@@ -22,11 +22,8 @@ $assets = base_url('assets/home/');
     <section class="header">
         <div class="container">
             <div class="content-header">
-                <div class="image">
-                    <img src="<?=$assets?>image/logo.png" alt="">
-                </div>
                 <div class="text">
-                    <p class="title">Our Seller</p>
+                    <p class="title">Borneo Schematics Seller</p>
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-5">
                             <p class="desc">Find a seller near you. Contact them for support or to purchase our
@@ -37,6 +34,37 @@ $assets = base_url('assets/home/');
             </div>
         </div>
     </section>
+	<div class="banner">
+		<div class="container">
+			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel"
+				 data-bs-interval="3000">
+				<div class="carousel-inner">
+					<?php $no = 1;?>
+					<?php foreach ($banner as $row):?>
+						<?php
+						$classAct = '';
+						if($no == 1){
+							$classAct = ' active';
+						}
+						?>
+						<div class="carousel-item <?= $classAct?>">
+							<img src="<?=base_url('assets/banner/'.$row->image)?>" class="d-block" alt="...">
+						</div>
+					<?php endforeach;?>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+						data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+						data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+	</div>
     <section class="list-seller">
         <div class="container">
             <div class="header-list">
@@ -72,7 +100,7 @@ $assets = base_url('assets/home/');
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Website : </p>
-                                        <p class="dynamic-list"><?= $row->website?></p>
+                                        <p class="dynamic-list"><a href="<?= $row->website?>" target="_blank" style="color: blue;"><?= $row->website?></a></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Payment Method : </p>
@@ -276,7 +304,7 @@ $assets = base_url('assets/home/');
             html += card_template_company + item.company + card_template_mid;
             html += item.name + card_template_phone;
             html += item.phone_number + card_template_website;
-            html += item.website + card_template_payment;
+            html += '<a href="'+item.website+'">WEB</a>' + card_template_payment;
             html += item.payment_option + card_template_address;
             html += item.address + card_template_end;
 

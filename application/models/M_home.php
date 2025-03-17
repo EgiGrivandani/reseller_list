@@ -59,4 +59,9 @@ class M_home extends CI_Model
 
 		return $query->result();
 	}
+
+	public function banner_active()
+	{
+		return $this->db->get_where('banner', array('status' => 1))->result();
+	}
 }
