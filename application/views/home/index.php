@@ -100,7 +100,11 @@ $assets = base_url('assets/home/');
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Website : </p>
-                                        <p class="dynamic-list"><a href="<?= $row->website?>" target="_blank" style="color: blue;"><?= $row->website?></a></p>
+										<?php
+										$url = $row->website;
+										$url = str_replace(["https://", "http://"], "", $url);
+										?>
+                                        <p class="dynamic-list"><a href="<?= $row->website?>" target="_blank" style="color: blue;"><?= $url?></a></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Payment Method : </p>
@@ -294,6 +298,11 @@ $assets = base_url('assets/home/');
         }
     }
 
+	function replaceUrl(url){
+		url = url.replace(/https?:\/\//, "");
+		return url;
+	}
+
     function metaResponse(response) {
         var base_url = "<?= base_url('assets/profile/') ?>";
         let html = '';
@@ -304,7 +313,7 @@ $assets = base_url('assets/home/');
             html += card_template_company + item.company + card_template_mid;
             html += item.name + card_template_phone;
             html += item.phone_number + card_template_website;
-            html += '<a href="'+item.website+'">'+item.website+'</a>' + card_template_payment;
+            html += '<a href="'+item.website+'">'+replaceUrl(item.website)+'</a>' + card_template_payment;
             html += item.payment_option + card_template_address;
             html += item.address + card_template_end;
 
