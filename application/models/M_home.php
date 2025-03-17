@@ -35,6 +35,10 @@ class M_home extends CI_Model
 			return $query->result();
 		}
 
+		public function resellerByUnique_name($seller){
+			return $this->db->get_where('reseller', array('unique_name' => $seller))->row();
+		}
+
 		public function search_get($id, $search){
 			$this->db->select('*');
 			$this->db->from('reseller');

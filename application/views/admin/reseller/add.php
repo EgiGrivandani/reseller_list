@@ -26,6 +26,12 @@
 							</div>
 							<div class="col-12">
 								<div class="form-group mandatory">
+									<label for="company" class="form-label">Unique name (for url)</label>
+									<input type="text" id="uname" class="form-control" name="uname" placeholder="unique name for url">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group mandatory">
 									<label for="address" class="form-label">Address</label>
 									<textarea class="form-control" id="address" rows="3" name="address"></textarea>
 								</div>

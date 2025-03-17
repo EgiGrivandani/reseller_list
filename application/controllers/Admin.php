@@ -53,7 +53,6 @@ class Admin extends CI_Controller
 
 	}
 
-
 	public function resellerAjax_post(){
 		if (!$this->input->is_ajax_request()) {
 			exit('No direct script access allowed');
@@ -63,6 +62,10 @@ class Admin extends CI_Controller
 
 
 		$this->form_validation->set_rules('fname', 'Full name', 'trim|required');
+		$this->form_validation->set_rules('uname', 'Unique name', 'trim|required|alpha_numeric|is_unique[reseller.unique_name]',[
+			'is_unique' => 'This unique seller name already exists.',
+			'alpha_numeric' => 'This unique seller name only contain letters and numbers.',
+		]);
 		$this->form_validation->set_rules('company', 'company', 'trim|required');
 		$this->form_validation->set_rules('address', 'address', 'trim|required');
 		$this->form_validation->set_rules('country', 'country', 'trim|required');
@@ -92,12 +95,32 @@ class Admin extends CI_Controller
 		$status  = true;
 
 		$this->form_validation->set_rules('idInput', 'id Input', 'trim|required');
+		$this->form_validation->set_rules('uname', 'Unique name', 'trim|required|alpha_numeric',[
+			'alpha_numeric' => 'This unique seller name only contain letters and numbers.',
+		]);
 		$this->form_validation->set_rules('fname', 'Full name', 'trim|required');
 		$this->form_validation->set_rules('company', 'company', 'trim|required');
 		$this->form_validation->set_rules('address', 'address', 'trim|required');
 		$this->form_validation->set_rules('country', 'country', 'trim|required');
 		$this->form_validation->set_rules('phone', 'phone', 'trim|required');
 
+		$idInput = $this->input->post('idInput', true);
+		$check = $this->M_admin->resellerById_get($idInput);
+		if(!$check){
+			echo json_encode([
+				'status' => false,
+				'message'	=> 'undefined request!!'
+			]);
+			exit();
+		}
+		$oldUnique = $check->unique_name;
+		$newUnique = $this->input->post('uname', true);
+		if($newUnique != $oldUnique){
+			$this->form_validation->set_rules('uname', 'Unique name', 'trim|required|alpha_numeric|is_unique[reseller.unique_name]',[
+				'is_unique' => 'This unique seller name already exists.',
+				'alpha_numeric' => 'This unique seller name only contain letters and numbers.',
+			]);
+		}
 		if($this->form_validation->run() == false){
 			$status  = false;
 			$message = validation_errors();
@@ -106,6 +129,7 @@ class Admin extends CI_Controller
 			if($save){
 				$message = 'success';
 			}else{
+				$status  = false;
 				$message = 'gagal menyimpan data';
 			}
 		}

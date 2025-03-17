@@ -90,6 +90,7 @@ class M_admin extends CI_Model
 
 	public function reseller_post(){
 		$fname = $this->input->post('fname', true);
+		$uname = $this->input->post('uname', true);
 		$email = '-';
 		$company = $this->input->post('company', true);
 		$address = $this->input->post('address', true);
@@ -106,6 +107,7 @@ class M_admin extends CI_Model
 
 		$data = array(
 			'name'	=> $fname,
+			'unique_name' => strtolower($uname),
 			'email' => $email,
 			'company'	=> $company,
 			'website'	=> $website,
@@ -129,6 +131,7 @@ class M_admin extends CI_Model
 	public function reseller_put(){
 		$idInput = $this->input->post('idInput', true);
 		$fname = $this->input->post('fname', true);
+		$uname = $this->input->post('uname', true);
 		$email = '-';
 		$company = $this->input->post('company', true);
 		$address = $this->input->post('address', true);
@@ -146,6 +149,7 @@ class M_admin extends CI_Model
 		if($check){
 			$data = array(
 				'name'	=> $fname,
+				'unique_name' => strtolower($uname),
 				'email' => $email,
 				'company'	=> $company,
 				'website'	=> $website,
@@ -182,7 +186,6 @@ class M_admin extends CI_Model
 		$this->db->where('id_reseller', $id);
 		return $this->db->delete('reseller');
 	}
-
 
 
 	//=========================BANNER===========================

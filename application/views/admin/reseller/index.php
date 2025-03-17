@@ -17,6 +17,7 @@
 						<tr>
 							<th>Date</th>
 							<th>Name</th>
+							<th>Unique name</th>
 							<th>Phone</th>
 							<th>Company</th>
 							<th>Profile</th>
@@ -40,6 +41,7 @@
 							<tr>
 								<td><?=$row->date_created?></td>
 								<td><?=$row->name?></td>
+								<td><?=$row->unique_name?></td>
 								<td><?=$row->phone_number?></td>
 								<td><?=$row->company?></td>
 								<td>
