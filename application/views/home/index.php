@@ -313,7 +313,7 @@ $assets = base_url('assets/home/');
             html += card_template_company + item.company + card_template_mid;
             html += item.name + card_template_phone;
             html += item.phone_number + card_template_website;
-            html += '<a href="'+item.website+'">'+replaceUrl(item.website)+'</a>' + card_template_payment;
+            html += '<a href="'+item.website+'" target="_blank" style="color: blue;">'+replaceUrl(item.website)+'</a>' + card_template_payment;
             html += item.payment_option + card_template_address;
             html += item.address + card_template_end;
 
