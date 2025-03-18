@@ -24,6 +24,7 @@
 							<th>Sosial Media</th>
 							<th>Country</th>
 							<th>Status</th>
+							<th>Link seller</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -37,6 +38,11 @@
 									$badgeBG = 'danger';
 								}
 								$statBadge = '<span class="badge bg-'.$badgeBG.'">'.$status.'</span>';
+								$linkseller = 'notfound';
+								if(!empty($row->unique_name)){
+									$link = base_url().$row->unique_name;
+									$linkseller = '<a href="'.$link.'" target="_blank">'.$link.'</a>';
+								}
 							?>
 							<tr>
 								<td><?=$row->date_created?></td>
@@ -67,6 +73,9 @@
 								</td>
 								<td><?=$row->flag?></td>
 								<td><?=$statBadge?></td>
+								<td>
+									<?=$linkseller?>
+								</td>
 								<td>
 									<div class="btn-group">
 										<a href="<?= base_url('Admin/reseller_put/'.$row->id_reseller)?>" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
