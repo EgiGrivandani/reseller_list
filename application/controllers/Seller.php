@@ -19,7 +19,7 @@ class Seller extends CI_Controller
 		}
 		$get = $this->M_home->resellerByUnique_name($seller_name);
 		if($get){
-			$data['title'] = $seller_name;
+			$data['title'] = $get->unique_name;
 			$data['list']  = $get;
 			$this->load->view('home/seller', $data);
 		}else{
