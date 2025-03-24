@@ -130,8 +130,7 @@
 											</li>
 										</ul>
 									</div>
-
-									<input type="text" id="payment" class="form-control" name="payment" placeholder="payment" value="<?=$list->payment_option?>">
+									<textarea class="form-control" id="payment" rows="3" name="payment"  placeholder="payment"><?=$list->payment_option?></textarea>
 								</div>
 							</div>
 

@@ -66,7 +66,7 @@
 									</td>
 									<td>:</td>
 									<td class="list-content">
-										<p><?=$list->address?></p>
+										<p><?= nl2br($list->address)?></p>
 									</td>
 								</tr>
 							</table>
@@ -74,7 +74,7 @@
 						</div>
 						<div class="payment">
 							<p class="title">Payment Method</p>
-							<p><?=$list->payment_option?></p>
+							<p><?=nl2br($list->payment_option)?></p>
 							<div class="icon-payment">
 								<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"
 									 fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"

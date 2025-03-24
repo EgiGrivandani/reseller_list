@@ -108,11 +108,11 @@ $assets = base_url('assets/home/');
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Payment Method : </p>
-                                        <p class="dynamic-list"><?= $row->payment_option?></p>
+                                        <p class="dynamic-list"><?= nl2br($row->payment_option)?></p>
                                     </div>
                                     <div class="list-card">
                                         <p class="title-list">Address :</p>
-                                        <p class="dynamic-list"><?= $row->address?></p>
+                                        <p class="dynamic-list"><?= nl2br($row->address)?></p>
                                     </div>
                                 </div>
                                 <div class="gradient-blur"></div>
@@ -314,8 +314,8 @@ $assets = base_url('assets/home/');
             html += item.name + card_template_phone;
             html += item.phone_number + card_template_website;
             html += '<a href="'+item.website+'" target="_blank" style="color: blue;">'+replaceUrl(item.website)+'</a>' + card_template_payment;
-            html += item.payment_option + card_template_address;
-            html += item.address + card_template_end;
+            html += item.payment_option.replace(/\n/g, '<br>') + card_template_address;
+            html += item.address.replace(/\n/g, '<br>') + card_template_end;
 
             if (item.whatsapp !== '') {
                 html += footer_wa + item.whatsapp + footer_wa_icon;

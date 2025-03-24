@@ -125,8 +125,7 @@
 											</li>
 										</ul>
 									</div>
-
-									<input type="text" id="payment" class="form-control" name="payment" placeholder="payment">
+									<textarea class="form-control" id="payment" rows="3" name="payment"  placeholder="payment"></textarea>
 								</div>
 							</div>
 

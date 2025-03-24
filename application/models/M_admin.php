@@ -93,11 +93,11 @@ class M_admin extends CI_Model
 		$uname = $this->input->post('uname', true);
 		$email = '-';
 		$company = $this->input->post('company', true);
-		$address = $this->input->post('address', true);
+		$address = $this->input->post('address');
 		$country = $this->input->post('country', true);
 
 		$website = $this->input->post('website', true);
-		$payment = $this->input->post('payment', true);
+		$payment = $this->input->post('payment');
 		$facebook = $this->input->post('facebook', true);
 		$instagram = $this->input->post('instagram', true);
 		$telegram = $this->input->post('telegram', true);
@@ -134,11 +134,11 @@ class M_admin extends CI_Model
 		$uname = $this->input->post('uname', true);
 		$email = '-';
 		$company = $this->input->post('company', true);
-		$address = $this->input->post('address', true);
+		$address = $this->input->post('address');
 		$country = $this->input->post('country', true);
 
 		$website = $this->input->post('website', true);
-		$payment = $this->input->post('payment', true);
+		$payment = $this->input->post('payment');
 		$facebook = $this->input->post('facebook', true);
 		$instagram = $this->input->post('instagram', true);
 		$telegram = $this->input->post('telegram', true);
