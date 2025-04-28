@@ -58,7 +58,7 @@ class M_home extends CI_Model
 		$this->db->from('reseller');
 		$this->db->where('status', 1);
 		$this->db->where('country', 999);
-
+        $this->db->order_by('RAND()');
 		$query = $this->db->get();
 
 		return $query->result();
