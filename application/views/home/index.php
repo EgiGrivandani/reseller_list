@@ -65,88 +65,7 @@ $assets = base_url('assets/home/');
 			</div>
 		</div>
 	</div>
-    <section class="list-seller">
-        <div class="container">
-            <div class="header-list">
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-md-8 ">
-                        <div class="country ">
-                            <i class="ti ti-world"></i>
-                            <span>WORLWIDE</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-list">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
-                    <?php foreach ($worldwide as $row):?>
-                    <div class="col">
-                        <div class="card worldwide">
-                            <div class="cards">
-                                <div class="header-card">
-                                    <div>
-                                         <img src="<?= base_url('assets/profile/'.$row->image)?>" alt="">
-                                    </div>
-                                    <?= $row->company?>
-                                </div>
-                                <div class="content-card">
-                                    <div class="list-card">
-                                        <p class="title-list">Full Name :</p>
-                                        <p class="dynamic-list"><?= $row->name?></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Phone Number : </p>
-                                        <p class="dynamic-list"><?= $row->phone_number?></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Website : </p>
-										<?php
-										$url = $row->website;
-										$url = str_replace(["https://", "http://"], "", $url);
-										?>
-                                        <p class="dynamic-list"><a href="<?= $row->website?>" target="_blank" style="color: blue;"><?= $url?></a></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Payment Method : </p>
-                                        <p class="dynamic-list"><?= nl2br($row->payment_option)?></p>
-                                    </div>
-                                    <div class="list-card">
-                                        <p class="title-list">Address :</p>
-                                        <p class="dynamic-list"><?= nl2br($row->address)?></p>
-                                    </div>
-                                </div>
-                                <div class="gradient-blur"></div>
-                                <span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-									<?php if(!empty($row->whatsapp)):?>
-										<div class="col">
-											<a class="btn  btn-wa" href="<?=$row->whatsapp?>" title="Whatsapp"
-												target="_blank">
-												<i class="ti ti-brand-whatsapp "></i> WA Order
-											</a>
-										</div>
-									<?php endif;?>
 
-									<?php if(!empty($row->telegram)):?>
-										<div class="col">
-											<a class="btn btn-tele  " href="<?=$row->telegram?>" title="Telegram"
-												target="_blank">
-												<i class="ti ti-brand-whatsapp "></i> Tele Order
-											</a>
-										</div>
-									<?php endif;?>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php endforeach;?>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="list-seller" id="sellerContent" style="display: none">
         <div class="container">
             <div class="text-center mb-3 ">
@@ -191,6 +110,89 @@ $assets = base_url('assets/home/');
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3" id="contentList">
 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="list-seller">
+        <div class="container">
+            <div class="header-list">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-md-8 ">
+                        <div class="country ">
+                            <i class="ti ti-world"></i>
+                            <span>WORLWIDE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+                    <?php foreach ($worldwide as $row):?>
+                        <div class="col">
+                            <div class="card worldwide">
+                                <div class="cards">
+                                    <div class="header-card">
+                                        <div>
+                                            <img src="<?= base_url('assets/profile/'.$row->image)?>" alt="">
+                                        </div>
+                                        <?= $row->company?>
+                                    </div>
+                                    <div class="content-card">
+                                        <div class="list-card">
+                                            <p class="title-list">Full Name :</p>
+                                            <p class="dynamic-list"><?= $row->name?></p>
+                                        </div>
+                                        <div class="list-card">
+                                            <p class="title-list">Phone Number : </p>
+                                            <p class="dynamic-list"><?= $row->phone_number?></p>
+                                        </div>
+                                        <div class="list-card">
+                                            <p class="title-list">Website : </p>
+                                            <?php
+                                            $url = $row->website;
+                                            $url = str_replace(["https://", "http://"], "", $url);
+                                            ?>
+                                            <p class="dynamic-list"><a href="<?= $row->website?>" target="_blank" style="color: blue;"><?= $url?></a></p>
+                                        </div>
+                                        <div class="list-card">
+                                            <p class="title-list">Payment Method : </p>
+                                            <p class="dynamic-list"><?= nl2br($row->payment_option)?></p>
+                                        </div>
+                                        <div class="list-card">
+                                            <p class="title-list">Address :</p>
+                                            <p class="dynamic-list"><?= nl2br($row->address)?></p>
+                                        </div>
+                                    </div>
+                                    <div class="gradient-blur"></div>
+                                    <span class="see-more"> <i class="ti ti-chevrons-down me-1"></i>See More</span>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <?php if(!empty($row->whatsapp)):?>
+                                            <div class="col">
+                                                <a class="btn  btn-wa" href="<?=$row->whatsapp?>" title="Whatsapp"
+                                                   target="_blank">
+                                                    <i class="ti ti-brand-whatsapp "></i> WA Order
+                                                </a>
+                                            </div>
+                                        <?php endif;?>
+
+                                        <?php if(!empty($row->telegram)):?>
+                                            <div class="col">
+                                                <a class="btn btn-tele  " href="<?=$row->telegram?>" title="Telegram"
+                                                   target="_blank">
+                                                    <i class="ti ti-brand-whatsapp "></i> Tele Order
+                                                </a>
+                                            </div>
+                                        <?php endif;?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
