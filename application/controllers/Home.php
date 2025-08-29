@@ -35,10 +35,10 @@ class Home extends CI_Controller
 			$CN = $_SERVER["HTTP_CF_IPCOUNTRY"];
 		}else{
 			$ip = $this->_geoIp_get();
-			$ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
-			if ($ipdat && isset($ipdat->geoplugin_countryCode)) {
-				$CN = $ipdat->geoplugin_countryCode;
-			}
+            $ipdat = @json_decode(file_get_contents("http://ipwho.is/{$ip}"));
+            if ($ipdat && $ipdat->success) {
+                $CN = $ipdat->country_code;
+            }
 		}
 
 		$check = $this->M_home->CountryByName_get($CN);
